@@ -5,6 +5,7 @@ class Node:
         self.right = None
     
 def max_path_sum(root):
+    # for only 1 child
     if root is None:
         return float('-inf')
     

@@ -1,3 +1,5 @@
+from collections import deque
+
 class Node:
     def __init__(self, val):
         self.val = val
@@ -7,13 +9,21 @@ class Node:
 
 def tree_min_value(root):
     if root is None:
-        return float('inf')
+        return None
     
-    left_vals = tree_min_value(root.left)
-    right_vals = tree_min_value(root.right)
+    queue = deque([root])
+    min_val = float('inf')
+    while queue:
+        current = queue.popleft()
+        if current.val < min_val:
+            min_val = current.val
 
-    return min(root.val, right_vals, left_vals)
-    
+        if current.left is not None:
+            queue.append(current.left)
+
+        if current.right is not None:
+            queue.append(current.right)
+    return min_val
 
 
 

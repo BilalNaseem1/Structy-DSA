@@ -5,7 +5,7 @@ def longest_word(s):
     max_word = ""
 
     for i in words:
-        if len(i)>max_len:
+        if len(i)>=max_len:
             max_len = len(i)
             max_word = i
 

@@ -1,12 +1,25 @@
+def explore(graph, node, visited):
+  if node in visited:
+    return False
+  
+  visited.add(node)
+
+  for nbr in graph[node]:
+    explore(graph, nbr, visited)
+
+  return True
+
+
 def connected_components_count(graph):
-    n = 0
+  visited = set()
+  count = 0
 
-    for i in graph:
-        n += len(graph[i])
+  for i in graph:
+    if explore(graph, i, visited) == True:
+      count +=1
 
-    # n = (n * (n-1)) /2
-    return n
-
+  return count
+    
 
 
 print(connected_components_count({
@@ -19,3 +32,4 @@ print(connected_components_count({
   4: [3, 2]
 }) # -> 2
 )
+
